@@ -27,4 +27,14 @@
 
         <applicationService serviceImplementation="com.github.garetht.typstsupport.configuration.SettingsState"/>
     </extensions>
+
+    <actions>
+        <action id="TypstSupport.PinMainFile"
+                class="com.github.garetht.typstsupport.editor.PinTypstMainFileAction"
+                text="Pin as Typst Main File"
+                description="Pin or unpin the current file as the main entry point for Typst compilation.">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
