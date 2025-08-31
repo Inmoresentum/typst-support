@@ -48,7 +48,7 @@ class PinTypstMainFileAction : AnAction() {
             .firstOrNull() ?: return
 
         val command = "tinymist.pinMain"
-        val arguments = if (settings.state.mainFilePath != null) listOf(mainFilePath) else null
+        val arguments = if (settings.state.mainFilePath != null) listOf(mainFilePath) else emptyList()
 
         lspServer.sendRequestSync {
             it.workspaceService.executeCommand(ExecuteCommandParams(command, arguments))
