@@ -39,7 +39,6 @@ class PinTypstMainFileAction : AnAction() {
 
         val settings = TypstProjectSettings.getInstance(project)
         val mainFilePath = virtualFile.path
-        val mainFileUri = "file://${mainFilePath}"
 
         // Toggle pin state
         settings.state.mainFilePath = if (settings.state.mainFilePath == mainFilePath) null else mainFilePath
@@ -49,7 +48,7 @@ class PinTypstMainFileAction : AnAction() {
             .firstOrNull() ?: return
 
         val command = "tinymist.pinMain"
-        val arguments = if (settings.state.mainFilePath != null) listOf(mainFileUri) else null
+        val arguments = if (settings.state.mainFilePath != null) listOf(mainFilePath) else null
 
         lspServer.sendRequestSync {
             it.workspaceService.executeCommand(ExecuteCommandParams(command, arguments))
